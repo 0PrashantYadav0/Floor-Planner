@@ -1,0 +1,47 @@
+/* src/components/FloorPlan.css */
+
+.floor-plan-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .room-details {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .book-button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .book-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .room {
+    transition: transform 0.2s; /* Smooth scaling effect on hover */
+  }
+  
+  .room:hover {
+    transform: scale(1.05); /* Slightly increase the size on hover */
+  }
+  
+  .room.available:hover {
+    fill: #2e8b57; /* Darker shade for available room hover */
+  }
+  
+  .room.booked:hover {
+    fill: #cc4a39; /* Darker shade for booked room hover */
+  }
