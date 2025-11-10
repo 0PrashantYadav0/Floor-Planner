@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 30
+    },
+    "auditLog": "/Users/prashantyadav/Downloads/Intelligent-Floor-Plan-Management-System-main/backend/logs/.4ea150efa9ad7793b9bc1ff05ed783652c9eb52f-audit.json",
+    "files": [
+        {
+            "date": 1762755744320,
+            "name": "/Users/prashantyadav/Downloads/Intelligent-Floor-Plan-Management-System-main/backend/logs/rejections-2025-11-10.log",
+            "hash": "747f6cce22887ff034b5e3ff784a9c7065896f791f8a41e4a7fbd3295e49457a"
+        }
+    ],
+    "hashType": "sha256"
+}

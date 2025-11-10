@@ -1,0 +1,36 @@
+{
+  "name": "floor-planner-backend",
+  "version": "1.0.0",
+  "description": "Floor Planner Backend - Intelligent Floor Plan Management System",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "start:prod": "node index.js",
+    "test": "jest --coverage",
+    "test:watch": "jest --watch",
+    "seed:admin": "node scripts/seedAdmin.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.2",
+    "express-async-handler": "^1.2.0",
+    "express-rate-limit": "^7.1.5",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.10.0",
+    "mongoose": "^8.7.2",
+    "morgan": "^1.10.0",
+    "nodemon": "^3.1.7",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.0",
+    "winston": "^3.11.0",
+    "winston-daily-rotate-file": "^4.7.1"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^6.3.3"
+  }
+}
