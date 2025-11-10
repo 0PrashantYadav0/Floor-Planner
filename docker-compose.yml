@@ -1,0 +1,78 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    container_name: floor-planner-backend
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=production
+      - PORT=3001
+      - MONGO_URI=mongodb://mongo:27017/floor-planner
+      - JWT_SECRET=${JWT_SECRET:-your-secret-key-change-in-production}
+      - JWT_EXPIRE=7d
+    depends_on:
+      - mongo
+      - redis
+    volumes:
+      - ./backend/logs:/app/logs
+    restart: unless-stopped
+    networks:
+      - floor-planner-network
+
+  frontend:
+    build: ./frontend
+    container_name: floor-planner-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - REACT_APP_API_URL=http://localhost:3001/api
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - floor-planner-network
+
+  mongo:
+    image: mongo:latest
+    container_name: floor-planner-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+      - mongo-config:/data/configdb
+    restart: unless-stopped
+    networks:
+      - floor-planner-network
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: floor-planner-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    restart: unless-stopped
+    networks:
+      - floor-planner-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  mongo-data:
+  mongo-config:
+  redis-data:
+
+networks:
+  floor-planner-network:
+    driver: bridge
+
